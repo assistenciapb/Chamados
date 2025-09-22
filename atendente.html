@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Chamados - Atendente</title>
+    <link rel="stylesheet" href="atendente.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Painel de Chamados - Atendente</h1>
+</header>
+
+<main>
+    <aside class="listaAtendimentos">
+        <h2>Atendimentos do Dia</h2>
+        <select id="atendenteSelect"></select>
+        <ul id="listaChamados"></ul>
+    </aside>
+
+    <section class="painelCentral">
+        <h2>Chamado Atual</h2>
+        <p id="nomeAtual">Nenhum usuário</p>
+        <p id="motivoAtual"></p>
+        <div class="botoesControle">
+            <button id="btnAnterior">Atendimento Anterior</button>
+            <button id="btnRepetir">Repetir Chamado</button>
+            <button id="btnProximo">Próximo Atendimento</button>
+        </div>
+    </section>
+</main>
+
+<script src="atendente.js"></script>
+</body>
+</html>

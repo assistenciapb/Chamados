@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepção - Sistema de Atendimentos</title>
+    <link rel="stylesheet" href="recepcao.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <!-- Header fixo com botões -->
+    <header>
+        <div>
+            <button id="btnAtendente">Atendente</button>
+            <button id="btnLogout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Área principal da página -->
+    <main>
+        <!-- Card de Receber Chamados -->
+        <div class="card" id="btnReceberChamados">
+            Receber Chamados
+        </div>
+
+        <!-- Chamado Atual -->
+        <div class="chamadoAtual">
+            <div id="nomeChamado">Nenhum atendimento</div>
+            <div id="motivoChamado"></div>
+        </div>
+    </main>
+
+    <!-- Script da recepção -->
+    <script src="recepcao.js"></script>
+</body>
+</html>
