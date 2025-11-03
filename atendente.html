@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Chamados - Atendente</title>
-    <link rel="stylesheet" href="atendente.css">
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Chamados</title>
+<link rel="stylesheet" href="atendente.css">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 <body>
-
 <header>
-    <h1>Painel de Chamados - Atendente</h1>
+    <h1>Painel de Chamados</h1>
+    <select id="atendenteSelect"></select>
 </header>
 
 <main>
-    <aside class="listaAtendimentos">
-        <h2>Atendimentos do Dia</h2>
-        <select id="atendenteSelect"></select>
-        <ul id="listaChamados"></ul>
-    </aside>
-
-    <section class="painelCentral">
-        <h2>Chamado Atual</h2>
-        <p id="nomeAtual">Nenhum usuário</p>
-        <p id="motivoAtual"></p>
-        <div class="botoesControle">
-            <button id="btnAnterior">Atendimento Anterior</button>
-            <button id="btnRepetir">Repetir Chamado</button>
-            <button id="btnProximo">Próximo Atendimento</button>
+    <div class="painel-container">
+        <div class="lista-chamados">
+            <h2>Chamados do Dia</h2>
+            <ul id="listaChamados"></ul>
         </div>
-    </section>
+
+        <div class="chamado-atual">
+            <h2>Atendimento Atual</h2>
+            <div><strong>Nome:</strong> <span id="nomeAtual">Nenhum usuário</span></div>
+            <div><strong>Motivo:</strong> <span id="motivoAtual"></span></div>
+            <div class="botoes-controle">
+                <button id="btnAnterior">Anterior</button>
+                <button id="btnRepetir">Repetir</button>
+                <button id="btnProximo">Próximo</button>
+            </div>
+        </div>
+    </div>
 </main>
 
 <script src="atendente.js"></script>
 </body>
 </html>
+
