@@ -31,10 +31,11 @@ loginForm.addEventListener('submit', async (e) => {
         await firebase.auth().signInWithEmailAndPassword(email, senha);
 
         // Redireciona para a página principal
-        window.location.href = "recepcao.html";
+        window.location.href = "painel.html";
 
     } catch (err) {
         console.error(err);
         errorMsg.textContent = "Erro no login: " + err.message;
     }
 });
+
