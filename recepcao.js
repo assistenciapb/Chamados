@@ -16,21 +16,11 @@ const db = firebase.firestore();
 // Elementos do DOM
 // =======================
 const btnReceberChamados = document.getElementById('btnReceberChamados');
-const statusRecebimento = document.getElementById('statusRecebimento');
 const nomeChamado = document.getElementById('nomeChamado');
 const motivoChamado = document.getElementById('motivoChamado');
-const btnAtendente = document.getElementById('btnAtendente');
-const btnLogout = document.getElementById('btnLogout'); // Novo botão logout
+const btnLogout = document.getElementById('btnLogout');
 
 let receberChamadosAtivo = false;
-let ultimoChamadoId = null;
-
-// =======================
-// Navegar para página do atendente
-// =======================
-btnAtendente.addEventListener('click', () => {
-    window.location.href = "atendente.html";
-});
 
 // =======================
 // Logout
@@ -49,7 +39,7 @@ btnLogout.addEventListener('click', () => {
 btnReceberChamados.addEventListener('click', () => {
     receberChamadosAtivo = !receberChamadosAtivo;
     btnReceberChamados.classList.toggle('active', receberChamadosAtivo);
-    statusRecebimento.textContent = receberChamadosAtivo ? "Ativo" : "Desativado";
+    btnReceberChamados.textContent = receberChamadosAtivo ? "Recebendo Chamados" : "Receber Chamados";
 });
 
 // =======================
@@ -63,12 +53,11 @@ db.collection('chamados_controle').doc('chamado_atual')
       const data = doc.data();
       if(!data.idAtendimento) return;
 
-      // Atualiza chamado na tela (permite repetir o mesmo atendimento)
-      ultimoChamadoId = data.idAtendimento;
+      // Atualiza chamado na tela
       nomeChamado.textContent = data.nome;
       motivoChamado.textContent = data.motivo;
 
-      // Chamado sonoro
+      // Sempre toca o chamado (mesmo que seja o mesmo idAtendimento)
       const utterance = new SpeechSynthesisUtterance(`Atendimento: ${data.nome}`);
       window.speechSynthesis.speak(utterance);
   });
