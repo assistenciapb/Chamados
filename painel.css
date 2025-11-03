@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef3fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.painel-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.painel-container h1 {
+    color: #2e5a86;
+    margin-bottom: 30px;
+}
+
+.botoes {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botoes button {
+    width: 250px;          /* largura maior tipo card */
+    height: 150px;         /* altura maior tipo card */
+    font-size: 20px;       /* texto maior */
+    border: none;
+    border-radius: 16px;   /* bordas arredondadas */
+    cursor: pointer;
+    background: #2e5a86;
+    color: #fff;
+    font-weight: 700;
+    transition: 0.3s;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botoes button:hover {
+    background: #27ae60;  /* muda para verde ao passar o mouse */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+    .botoes {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .botoes button {
+        width: 80%;
+        height: 120px;
+        font-size: 18px;
+    }
+}
