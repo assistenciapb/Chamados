@@ -93,6 +93,12 @@ function preencherLista() {
         li.style.justifyContent = "space-between";
         li.style.alignItems = "center";
 
+        // Clique no chamado
+        li.addEventListener('click', () => {
+            indiceAtual = i;
+            chamarAtendimento();
+        });
+
         // Texto do chamado
         const textoChamado = document.createElement('span');
         textoChamado.textContent = `${c.nome} - ${c.motivo}`;
@@ -109,7 +115,7 @@ function preencherLista() {
         btnPronto.style.borderRadius = "4px";
         btnPronto.style.transition = "0.2s";
 
-        if(c.docsProntos) {
+        if (c.docsProntos) {
             btnPronto.style.background = "#27ae60";
             btnPronto.style.color = "#fff";
         } else {
@@ -127,31 +133,28 @@ function preencherLista() {
         }
 
         btnPronto.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); // impede chamar atendimento ao clicar no botão
             db.collection('atendimentos_gerais').doc(c.id)
-              .update({ docsProntos: true })
-              .then(() => {
-                  c.docsProntos = true;
-                  btnPronto.style.background = "#27ae60";
-                  btnPronto.style.color = "#fff";
-                  btnPronto.onmouseenter = null;
-                  btnPronto.onmouseleave = null;
-              })
-              .catch(err => console.error("Erro ao atualizar: " + err.message));
+                .update({ docsProntos: true })
+                .then(() => {
+                    c.docsProntos = true;
+                    btnPronto.style.background = "#27ae60";
+                    btnPronto.style.color = "#fff";
+                })
+                .catch(err => console.error("Erro ao atualizar: " + err.message));
         });
 
         li.appendChild(btnPronto);
 
-        // Destaca item ativo
-        if(ultimoChamado && ultimoChamado.id === c.id) {
+        // Destacar chamado ativo
+        if (ultimoChamado && ultimoChamado.id === c.id) {
             li.classList.add("chamadoAtivo");
-        } else {
-            li.classList.remove("chamadoAtivo");
         }
 
         listaChamados.appendChild(li);
     });
 }
+
 
 // =======================
 // Chamar atendimento
